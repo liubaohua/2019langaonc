@@ -189,11 +189,12 @@ namespace test
 			                <nshouldoutnum>" + GetCellValue(arry, rownum + m, 11) + @"</nshouldoutnum>
 			                <vuserdef1>" + GetCellValue(arry, rownum + m, 13) + @"</vuserdef1>
 			                <vuserdef19>" + GetCellValue(arry, rownum + m, 14) + @"</vuserdef19>
+			                <vuserdef17>" + GetCellValue(arry, k, 6) + @"</vuserdef17>
 			                <vnotebody>" + GetCellValue(arry, rownum + m, 15) + @"</vnotebody>
 			                <noutassistnum>0</noutassistnum>
                             </entry>";
                 }
-                rownum = rownum + (int)al[k];//vuserdef1烤漆面积  vuserdef19 工序单号 vnotebody 备注
+                rownum = rownum + (int)al[k];//vuserdef1烤漆面积  vuserdef19 工序单号 vnotebody 备注  vuserdef17 项目号
                 bills = bills + @"</body></ic_bill>";
             }
             return head + bills + " </ufinterface>";
