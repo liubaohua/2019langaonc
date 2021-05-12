@@ -1,1 +1,12 @@
 朗奥NC材料出库单导入
+125.124.69.95
+administrator
+Lang2020
+
+http://127.0.0.1:5367/login.jsp
+UF
+123
+
+
+ic_special_h  盘点单4R
+

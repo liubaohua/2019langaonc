@@ -50,6 +50,9 @@ namespace test
         {
             try
             {
+                String billType = cb1.Text;
+                if (!"材料出库单".Equals(billType) && !"库存盘点单".Equals(billType))
+                    return;
                 if (ofd == null)
                 {
                     ofd = new OpenFileDialog();
@@ -67,7 +70,12 @@ namespace test
                     object[,] arry = eu.ReadExcel(strFileName, "Sheet1");
                     if (arry == null)
                         return;
-                    string data = GetXML(tbSender.Text,arry);// File.ReadAllText("c:\\4d1.xml");
+                    String data="";
+                    if(billType.Equals("材料出库单"))
+                        data = GetXML(tbSender.Text,arry);// File.ReadAllText("c:\\4d1.xml");
+                    if (billType.Equals("库存盘点单"))
+                        data = GetXMLForPDD(tbSender.Text, arry);
+
                     string xml = GetRequestContext("http://" + tbIP.Text + "/service/XChangeServlet?account="+tbAccount.Text+"&receiver=" + tbCorp.Text, data, "POST", Encoding.UTF8);
                     XmlDocument doc = new XmlDocument();
                     doc.LoadXml(xml);
@@ -97,6 +105,80 @@ namespace test
             }
             return o.ToString();
         }
+
+        private String GetXMLForPDD(string sender, object[,] arry)
+        {
+            String head = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <ufinterface billtype=\"4R\" filename=\"4R.xml\" isDebug=\"N\" isexchange=\"Y\" proc=\"add\" receiver=\"1\" replace=\"Y\" roottag=\"ic_bill\" sender=\"" + sender + "\" subbilltype=\"\">";
+            int iRowCnt = arry.GetLength(0);
+            int iColCnt = arry.GetLength(1);
+            int i = 1;
+
+            string bills = "";
+
+            ArrayList al = new ArrayList();
+            for (int j = 0; j < iRowCnt; )
+            {
+                string billnum = GetCellValue(arry, j, 0);
+                int j0 = j;
+                int billcnt = 1;
+                while (true)
+                {
+                    j++;
+                    if (j == iRowCnt)
+                    {
+                        break;
+                    }
+                    string billnum2 = GetCellValue(arry, j, 0);
+                    if (!billnum.Equals(billnum2))
+                        break;
+                }
+                billcnt = j - j0;
+                al.Add(billcnt);
+            }
+
+            int rownum = 0;
+
+            for (int k = 0; k < al.Count; k++)
+            {
+                bills += @"<ic_bill>        
+                    <ic_bill_head>
+                        <cbilltypecode>4K</cbilltypecode>            
+                        <dbilldate>" + GetCellValue(arry, k, 1) + @"</dbilldate>            
+                        <pk_corp>" + tbCorp.Text + @"</pk_corp>            
+                        <vbillcode></vbillcode>            
+                        <coperatorid>" + GetCellValue(arry, k, 2) + @"</coperatorid>            
+                        <coperatoridnow>" + GetCellValue(arry, k, 2) + @"</coperatoridnow>            
+                        <cwarehouseid>" + GetCellValue(arry, k, 3) + @"</cwarehouseid>
+                        
+                        <cdispatcherid>" + GetCellValue(arry, k, 5) + @"</cdispatcherid>            
+                        <vuserdef17>" + GetCellValue(arry, k, 6) + @"</vuserdef17>
+                        <vnote>" + GetCellValue(arry, k, 7) + @"</vnote>            
+                        <vuserdef1>" + GetCellValue(arry, k, 8) + @"</vuserdef1>            
+                        <fbillflag>2</fbillflag>
+                        <icheckmode>4</icheckmode>
+                    </ic_bill_head>
+                    <body>";
+                for (int m = 0; m < (int)al[k]; m++)
+                {
+                    bills = bills + @"<entry>
+                            <crowno>" + 10 * (m + 1) + @"</crowno>
+                            <cinventoryid>" + GetCellValue(arry, rownum + m, 9) + @"</cinventoryid>                
+                            <cinvbasid>" + GetCellValue(arry, rownum + m, 9) + @"</cinvbasid>                
+                            <castunitid>" + GetCellValue(arry, rownum + m, 10) + @"</castunitid>
+			                <dbizdate>" + GetCellValue(arry, rownum + m, 1) + @"</dbizdate>
+			                <naccountnum>" + GetCellValue(arry, rownum + m, 11) + @"</naccountnum>
+			                <nchecknum>" + GetCellValue(arry, rownum + m, 11) + @"</nchecknum>
+			                <nadjustnum>" + 0 + @"</nadjustnum>
+
+                            </entry>";
+                }
+                rownum = rownum + (int)al[k];//vuserdef1烤漆面积  vuserdef19 工序单号 vnotebody 备注  cprojectid 项目号
+                bills = bills + @"</body></ic_bill>";
+            }
+            return head + bills + " </ufinterface>";
+        }
+
+
 
         private String GetXML(string sender,object[,] arry)
         {

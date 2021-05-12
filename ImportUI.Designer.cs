@@ -46,9 +46,10 @@
             // 
             // btPost
             // 
-            this.btPost.Location = new System.Drawing.Point(184, 163);
+            this.btPost.Location = new System.Drawing.Point(245, 204);
+            this.btPost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btPost.Name = "btPost";
-            this.btPost.Size = new System.Drawing.Size(75, 23);
+            this.btPost.Size = new System.Drawing.Size(100, 29);
             this.btPost.TabIndex = 0;
             this.btPost.Text = "导入";
             this.btPost.UseVisualStyleBackColor = true;
@@ -56,18 +57,20 @@
             // 
             // tbIP
             // 
-            this.tbIP.Location = new System.Drawing.Point(77, 9);
+            this.tbIP.Location = new System.Drawing.Point(103, 11);
+            this.tbIP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbIP.Name = "tbIP";
-            this.tbIP.Size = new System.Drawing.Size(139, 21);
+            this.tbIP.Size = new System.Drawing.Size(184, 25);
             this.tbIP.TabIndex = 1;
             this.tbIP.Text = "192.168.18.8:5367";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 12);
+            this.label1.Location = new System.Drawing.Point(4, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.Size = new System.Drawing.Size(84, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "NC服务器IP";
             // 
@@ -76,95 +79,106 @@
             this.cb1.FormattingEnabled = true;
             this.cb1.Items.AddRange(new object[] {
             "材料出库单",
-            "其他出库单"});
-            this.cb1.Location = new System.Drawing.Point(77, 46);
+            "其他出库单",
+            "库存盘点单"});
+            this.cb1.Location = new System.Drawing.Point(103, 58);
+            this.cb1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cb1.Name = "cb1";
-            this.cb1.Size = new System.Drawing.Size(139, 20);
+            this.cb1.Size = new System.Drawing.Size(184, 23);
             this.cb1.TabIndex = 3;
             this.cb1.Text = "材料出库单";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 49);
+            this.label2.Location = new System.Drawing.Point(4, 61);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
+            this.label2.Size = new System.Drawing.Size(67, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "单据类型";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 81);
+            this.label3.Location = new System.Drawing.Point(4, 101);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "公司编码";
             // 
             // tbCorp
             // 
-            this.tbCorp.Location = new System.Drawing.Point(77, 81);
+            this.tbCorp.Location = new System.Drawing.Point(103, 101);
+            this.tbCorp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbCorp.Name = "tbCorp";
-            this.tbCorp.Size = new System.Drawing.Size(139, 21);
+            this.tbCorp.Size = new System.Drawing.Size(184, 25);
             this.tbCorp.TabIndex = 1;
             this.tbCorp.Text = "03";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 136);
+            this.label4.Location = new System.Drawing.Point(4, 170);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
+            this.label4.Size = new System.Drawing.Size(67, 15);
             this.label4.TabIndex = 2;
             this.label4.Text = "文件路径";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(77, 133);
+            this.textBox2.Location = new System.Drawing.Point(103, 166);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(139, 21);
+            this.textBox2.Size = new System.Drawing.Size(184, 25);
             this.textBox2.TabIndex = 1;
             // 
             // tbSender
             // 
-            this.tbSender.Location = new System.Drawing.Point(77, 106);
+            this.tbSender.Location = new System.Drawing.Point(103, 132);
+            this.tbSender.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbSender.Name = "tbSender";
-            this.tbSender.Size = new System.Drawing.Size(139, 21);
+            this.tbSender.Size = new System.Drawing.Size(184, 25);
             this.tbSender.TabIndex = 1;
             this.tbSender.Text = "222";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 110);
+            this.label5.Location = new System.Drawing.Point(4, 138);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.Size = new System.Drawing.Size(52, 15);
             this.label5.TabIndex = 2;
             this.label5.Text = "发送方";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 168);
+            this.label6.Location = new System.Drawing.Point(4, 210);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 12);
+            this.label6.Size = new System.Drawing.Size(67, 15);
             this.label6.TabIndex = 4;
             this.label6.Text = "账套编码";
             // 
             // tbAccount
             // 
-            this.tbAccount.Location = new System.Drawing.Point(77, 163);
+            this.tbAccount.Location = new System.Drawing.Point(103, 204);
+            this.tbAccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tbAccount.Name = "tbAccount";
-            this.tbAccount.Size = new System.Drawing.Size(93, 21);
+            this.tbAccount.Size = new System.Drawing.Size(123, 25);
             this.tbAccount.TabIndex = 1;
             this.tbAccount.Text = "5367";
             // 
             // ImportUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(268, 193);
+            this.ClientSize = new System.Drawing.Size(357, 241);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cb1);
             this.Controls.Add(this.label5);
@@ -179,6 +193,7 @@
             this.Controls.Add(this.tbIP);
             this.Controls.Add(this.btPost);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ImportUI";
             this.Text = "导入工具";
             this.Load += new System.EventHandler(this.ImportUI_Load);
