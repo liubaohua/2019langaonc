@@ -10,3 +10,11 @@ UF
 
 ic_special_h  盘点单4R
 
+项目主键	naccountnum  账面数量
+nchecknum 盘点数量
+cysl  差异数量
+nadjustnum 调整数量
+nprice 调整单价
+je 调整金额
+
+

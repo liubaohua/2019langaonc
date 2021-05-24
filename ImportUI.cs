@@ -53,6 +53,9 @@ namespace test
                 String billType = cb1.Text;
                 if (!"材料出库单".Equals(billType) && !"库存盘点单".Equals(billType))
                     return;
+                String contents = tbIP.Text + "\r\n" + billType + "\r\n" + tbCorp.Text + "\r\n" + tbSender.Text + "\r\n" + tbAccount.Text;
+
+                File.WriteAllText("param.txt", contents);
                 if (ofd == null)
                 {
                     ofd = new OpenFileDialog();
@@ -142,20 +145,18 @@ namespace test
             {
                 bills += @"<ic_bill>        
                     <ic_bill_head>
-                        <cbilltypecode>4K</cbilltypecode>            
-                        <dbilldate>" + GetCellValue(arry, k, 1) + @"</dbilldate>            
+                        <cbilltypecode>4R</cbilltypecode>            
+                        <dbilldate>" + GetCellValue(arry, k, 1) + @"</dbilldate>
+                                
                         <pk_corp>" + tbCorp.Text + @"</pk_corp>            
                         <vbillcode></vbillcode>            
                         <coperatorid>" + GetCellValue(arry, k, 2) + @"</coperatorid>            
                         <coperatoridnow>" + GetCellValue(arry, k, 2) + @"</coperatoridnow>            
-                        <cwarehouseid>" + GetCellValue(arry, k, 3) + @"</cwarehouseid>
-                        
-                        <cdispatcherid>" + GetCellValue(arry, k, 5) + @"</cdispatcherid>            
-                        <vuserdef17>" + GetCellValue(arry, k, 6) + @"</vuserdef17>
-                        <vnote>" + GetCellValue(arry, k, 7) + @"</vnote>            
-                        <vuserdef1>" + GetCellValue(arry, k, 8) + @"</vuserdef1>            
+                        <coutwarehouseid>" + GetCellValue(arry, k, 3) + @"</coutwarehouseid>
+                        <vnote>" + GetCellValue(arry, k, 4) + @"</vnote>                              
                         <fbillflag>2</fbillflag>
                         <icheckmode>4</icheckmode>
+<iprintcount>0</iprintcount>
                     </ic_bill_head>
                     <body>";
                 for (int m = 0; m < (int)al[k]; m++)
@@ -163,12 +164,11 @@ namespace test
                     bills = bills + @"<entry>
                             <crowno>" + 10 * (m + 1) + @"</crowno>
                             <cinventoryid>" + GetCellValue(arry, rownum + m, 9) + @"</cinventoryid>                
-                            <cinvbasid>" + GetCellValue(arry, rownum + m, 9) + @"</cinvbasid>                
-                            <castunitid>" + GetCellValue(arry, rownum + m, 10) + @"</castunitid>
+                            <cinvbasid>" + GetCellValue(arry, rownum + m, 9) + @"</cinvbasid>                          
 			                <dbizdate>" + GetCellValue(arry, rownum + m, 1) + @"</dbizdate>
 			                <naccountnum>" + GetCellValue(arry, rownum + m, 11) + @"</naccountnum>
-			                <nchecknum>" + GetCellValue(arry, rownum + m, 11) + @"</nchecknum>
-			                <nadjustnum>" + 0 + @"</nadjustnum>
+			                <nchecknum>" + GetCellValue(arry, rownum + m, 12) + @"</nchecknum>
+			                <nadjustnum>" + GetCellValue(arry, rownum + m, 13) + @"</nadjustnum>
 
                             </entry>";
                 }
@@ -288,10 +288,10 @@ namespace test
             {
                 string[] param = File.ReadAllLines("param.txt");
                 tbIP.Text = param[0];
-                tbCorp.Text = param[1];
-                tbSender.Text = param[2];
-                tbAccount.Text = param[3];
-                
+                cb1.Text = param[1];
+                tbCorp.Text = param[2];
+                tbSender.Text = param[3];
+                tbAccount.Text = param[4];
             }
             catch (Exception)
             {
